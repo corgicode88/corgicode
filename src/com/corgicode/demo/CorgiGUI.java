@@ -5,10 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.*;
 import java.awt.event.*;
 
-
-// A class that represents a graphical user interface for the corgi simulation
 class CorgiGUI extends JFrame implements ActionListener {
-    // Components of the GUI
     private JLabel nameLabel; // a label to display the name of the corgi
     private JLabel energyLabel; // a label to display the energy level of the corgi
     private JLabel moodLabel; // a label to display the mood of the corgi
@@ -19,11 +16,9 @@ class CorgiGUI extends JFrame implements ActionListener {
     private JComboBox<String> trickComboBox; // a combo box to select a trick
     private JTextArea outputTextArea; // a text area to display the output of the simulation
 
-    // Attributes of the GUI
     private static Corgi corgi; // a corgi object to simulate
     private static Ball ball; // a ball object to play fetch with
 
-    // Constructor of the GUI
     public CorgiGUI(Corgi corgi, Ball ball) {
         this.corgi = corgi;
         this.ball = ball;
@@ -63,12 +58,10 @@ class CorgiGUI extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    // A method that handles the actions performed on the GUI
     public void actionPerformed(ActionEvent e) {
-        Corgi corgiU = this.corgi;
         if (e.getSource() == barkButton) { // if the bark button is clicked
-            corgiU.bark(); // make the corgi bark
-            updateGUI(corgiU); // update the GUI labels and text area
+            corgi.bark(); // make the corgi bark
+            updateGUI(corgi); // update the GUI labels and text area
         }
 
         if (e.getSource() == wagTailButton) { // if the wag tail button is clicked
@@ -86,14 +79,12 @@ class CorgiGUI extends JFrame implements ActionListener {
             corgi.doTrick(trick); // make the corgi do the trick
             updateGUI(corgi); // update the GUI labels and text area
         }
-
     }
 
     public void updateGUI(Corgi corgi) {
         energyLabel.setText("Energy: " + corgi.getEnergy());
         moodLabel.setText("Mood: " + corgi.getMood());
         outputTextArea.append(corgi.getName() + ":" +corgi.toString() + "\n");
-        //outputTextArea.append(corgi.getName() + ": " + System.console().readLine() + "\n");
         outputTextArea.setCaretPosition(outputTextArea.getDocument().getLength());
     }
 }
