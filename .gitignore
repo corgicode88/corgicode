@@ -19,6 +19,7 @@ mvnw.cmd
 *.iws
 *.iml
 *.ipr
+out/production/corgicode/
 
 ### NetBeans ###
 nbproject/private/
